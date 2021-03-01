@@ -7,21 +7,11 @@ use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
     public function index()
     {
         $departments = DB::table('departments')
@@ -43,7 +33,7 @@ class HomeController extends Controller
             ->select('reviews.*')
             ->get();
 
-        return view('home',['departments'=>$departments, 'doctors'=>$doctors, 'services'=>$services, 'news'=>$news, 'banners'=>$banners, 'reviews'=>$reviews,]);
+        return view('frontend.home_layout',['departments'=>$departments, 'doctors'=>$doctors, 'services'=>$services, 'news'=>$news, 'banners'=>$banners, 'reviews'=>$reviews,]);
     }
 
     public function banners()
@@ -51,7 +41,7 @@ class HomeController extends Controller
         $banners = DB::table('banners')
             ->select('banners.*')
             ->get();
-        return view('banners',['banners'=>$banners]);
+        return view('frontend.banners',['banners'=>$banners]);
     }
 
     public function departments()
@@ -59,7 +49,7 @@ class HomeController extends Controller
         $departments = DB::table('departments')
             ->select('departments.*')
             ->get();
-        return view('departments',['departments'=>$departments]);
+        return view('frontend.manages.departments',['departments'=>$departments]);
     }
 
     public function doctors()
@@ -67,7 +57,7 @@ class HomeController extends Controller
         $doctors = DB::table('doctors')
             ->select('doctors.*')
             ->get();
-        return view('doctors',['doctors'=>$doctors]);
+        return view('frontend.doctors',['doctors'=>$doctors]);
     }
 
     public function services()
@@ -75,7 +65,7 @@ class HomeController extends Controller
         $services = DB::table('services')
             ->select('services.*')
             ->get();        
-            return view('services',['services'=>$services]);
+            return view('frontend.services',['services'=>$services]);
     }
 
     public function news()
@@ -83,7 +73,7 @@ class HomeController extends Controller
         $news = DB::table('news')
             ->select('news.*')
             ->get();
-        return view('news',['news'=>$news]);
+        return view('frontend.news',['news'=>$news]);
     }    
 
     public function reviews()
@@ -91,12 +81,80 @@ class HomeController extends Controller
         $reviews = DB::table('reviews')
             ->select('reviews.*')
             ->get();
-        return view('reviews',['reviews'=>$reviews]);
+        return view('frontend.reviews',['reviews'=>$reviews]);
     }
 
 
+    ///SINGLE PAGE
+    public function banner($id)
+    {
+        $banners = DB::table('banners')
+            ->select('banners.*')
+            ->where('banners.id','=',$id)
+            ->get();
+        return view('frontend.single.banner',['banners'=>$banners]);
+    }
 
+    public function department($id)
+    {
+        $departments = DB::table('departments')
+            ->select('departments.*')
+            ->where('departments.id','=',$id)
+            ->get();
+      
+        $doctors = DB::table('doctors')
+            ->select('doctors.*')
+            ->get();
+        $services = DB::table('services')
+            ->select('services.*')
+            ->get();
+        $news = DB::table('news')
+            ->select('news.*')
+            ->get();
+        $banners = DB::table('banners')
+            ->select('banners.*')
+            ->get();
+        $reviews = DB::table('reviews')
+            ->select('reviews.*')
+            ->get();
 
+        return view('frontend.single.department',['departments'=>$departments, 'doctors'=>$doctors, 'services'=>$services,  'news'=>$news, 'banners'=>$banners, 'reviews'=>$reviews, ]);
+    }
 
+    public function doctor($id)
+    {
+        $doctors = DB::table('doctors')
+            ->select('doctors.*')
+            ->where('doctors.id','=',$id)
+            ->get();
+        return view('frontend.single.doctor',['doctors'=>$doctors]);
+    }
+
+    public function service($id)
+    {
+        $services = DB::table('services')
+            ->select('services.*')
+            ->where('services.id','=',$id)
+            ->get();        
+            return view('frontend.single.service',['services'=>$services]);
+    }
+
+    public function new($id)
+    {
+        $news = DB::table('news')
+            ->select('news.*')
+            ->where('news.id','=',$id)
+            ->get();
+        return view('frontend.single.news',['news'=>$news]);
+    }    
+
+    public function review($id)
+    {
+        $reviews = DB::table('reviews')
+            ->select('reviews.*')
+            ->where('reviews.id','=',$id)
+            ->get();
+        return view('frontend.single.review',['reviews'=>$reviews]);
+    }
 
 }

@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Admin | Hospital </title>
+    <title>Admin | Hospital Cox </title>
 
     <!-- Bootstrap Core CSS -->
     <link href="{{ asset('backend') }}/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -51,7 +51,7 @@
     </nav>
 
     <div id="page-wrapper">
-            <!--This isfor dynamic content--!>
+            <!--This isfor dynamic content-->
             @yield('admin_content')
     </div>
     <!-- /#page-wrapper -->

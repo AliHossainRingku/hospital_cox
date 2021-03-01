@@ -26,20 +26,28 @@ Route::get('/admin', function () {
     return view('welcome');
 });
 
-Route::get('/admin/home', function () {
-    return view('admin_layout');
-});
+// Route::get('/admin/home', function () {
+//     return view('admin.admin_layout');
+// });
 
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
-
+//MANAGE VIEWS
 Route::get('banners', [HomeController::class, 'banners']);
 Route::get('departments', [HomeController::class, 'departments']);
 Route::get('doctors', [HomeController::class, 'doctors']);
 Route::get('news', [HomeController::class, 'news']);
 Route::get('services', [HomeController::class, 'services']);
 Route::get('reviews', [HomeController::class, 'reviews']);
+
+//SINGLE PAGE 
+Route::get('banners/{id}', [HomeController::class, 'banner']);
+Route::get('departments/{id}', [HomeController::class, 'department']);
+Route::get('doctors/{id}', [HomeController::class, 'doctor']);
+Route::get('news/{id}', [HomeController::class, 'new']);
+Route::get('services/{id}', [HomeController::class, 'service']);
+Route::get('reviews/{id}', [HomeController::class, 'review']);
 
 
 
