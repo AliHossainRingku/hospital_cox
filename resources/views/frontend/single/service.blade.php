@@ -1,4 +1,4 @@
-@extends('admin_layout')
+@extends('frontend.home_layout')
 
 @section('admin_content')
     <h1>Services</h1>

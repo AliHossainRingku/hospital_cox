@@ -26,9 +26,9 @@ Route::get('/admin', function () {
     return view('welcome');
 });
 
-// Route::get('/admin/home', function () {
-//     return view('admin.admin_layout');
-// });
+Route::get('/admin/home', function () {
+    return view('admin.admin_layout');
+});
 
 Auth::routes();
 

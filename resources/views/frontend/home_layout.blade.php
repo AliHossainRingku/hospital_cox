@@ -59,7 +59,6 @@
                     <!-- Header Area End Here -->
 
                     <!-- Slider Area Start Here -->
-                    @include('frontend.includes.slider')
                     <!-- Slider Area End Here -->
                         
                         <!--Dynamic part start here -->

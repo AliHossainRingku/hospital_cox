@@ -25,6 +25,10 @@
                                 <li>
                                     <a href="{{url('/departments')}}">Departments</a>
                                     <ul class="dropdown-menu-col-1">
+                                    	<?php $departments = DB::table('departments')
+						                    ->where('publication_status',1)
+						                    ->get();
+						                ?>
                                         @foreach($departments as $data)
                                         <li>
                                             <a href="{{ url('/departments/'.$data->id.'') }}"> {{ $data->department_name }}  </a>
@@ -35,6 +39,10 @@
                                 <li>
                                     <a href="#">Doctors</a>
                                     <ul class="dropdown-menu-col-1">
+                                    	<?php $doctors = DB::table('doctors')
+						                    ->where('publication_status',1)
+						                    ->get();
+						                ?>
                                         @foreach($doctors as $data)
                                         <li>
                                             <a href="doctor.html"> {{ $data->doctor_name }}  </a>
@@ -45,6 +53,10 @@
                                 <li>
                                     <a href="#">Services</a>
                                     <ul class="dropdown-menu-col-1">
+                                    	<?php $services = DB::table('services')
+						                    ->where('publication_status',1)
+						                    ->get();
+						                ?>
                                         @foreach($services as $data)
                                         <li>
                                             <a href="services.html"> {{ $data->service_name }}  </a>
