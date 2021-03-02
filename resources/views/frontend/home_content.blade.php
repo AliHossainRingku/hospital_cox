@@ -328,7 +328,7 @@
                 @foreach($doctors as $doctor)
                 <div class="team-box-layout4">
                     <div class="item-img">
-                        <img src="frontend/img/team/team2.jpg" alt="Team1" class="img-fluid">
+                        <img src="{{$doctor->doctor_image}}" alt="Team1" class="img-fluid">
                         <ul class="item-icon">
                             <li>
                                 <a href="single-doctor.html">
@@ -342,86 +342,10 @@
                             <a href="single-doctor.html">{{$doctor->doctor_name}}</a>
                         </h4>
                         <p>{{$doctor->doctor_designation}}</p>
-                        <a href="single-doctor.html" class="item-btn">MAKE AN APPOINTMENT</a>
+                        <a href="{{url('/doctors/'.$doctor->id)}}" class="item-btn">MAKE AN APPOINTMENT</a>
                     </div>
                 </div>
                 @endforeach
-                <div class="team-box-layout4">
-                    <div class="item-img">
-                        <img src="frontend/img/team/team3.jpg" alt="Team1" class="img-fluid">
-                        <ul class="item-icon">
-                            <li>
-                                <a href="single-doctor.html">
-                                    <i class="fas fa-plus"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="item-content">
-                        <h4 class="item-title">
-                            <a href="single-doctor.html">Dr. Zinia Zara</a>
-                        </h4>
-                        <p>Pregnancy</p>
-                        <a href="single-doctor.html" class="item-btn">MAKE AN APPOINTMENT</a>
-                    </div>
-                </div>
-                <div class="team-box-layout4">
-                    <div class="item-img">
-                        <img src="frontend/img/team/team4.jpg" alt="Team1" class="img-fluid">
-                        <ul class="item-icon">
-                            <li>
-                                <a href="single-doctor.html">
-                                    <i class="fas fa-plus"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="item-content">
-                        <h4 class="item-title">
-                            <a href="single-doctor.html">Dr. Nadim Kamal</a>
-                        </h4>
-                        <p>Neurology</p>
-                        <a href="single-doctor.html" class="item-btn">MAKE AN APPOINTMENT</a>
-                    </div>
-                </div>
-                <div class="team-box-layout4">
-                    <div class="item-img">
-                        <img src="frontend/img/team/team5.jpg" alt="Team1" class="img-fluid">
-                        <ul class="item-icon">
-                            <li>
-                                <a href="single-doctor.html">
-                                    <i class="fas fa-plus"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="item-content">
-                        <h4 class="item-title">
-                            <a href="single-doctor.html">Dr. Marry Smith</a>
-                        </h4>
-                        <p>Therapist</p>
-                        <a href="single-doctor.html" class="item-btn">MAKE AN APPOINTMENT</a>
-                    </div>
-                </div>
-                <div class="team-box-layout4">
-                    <div class="item-img">
-                        <img src="frontend/img/team/team2.jpg" alt="Team1" class="img-fluid">
-                        <ul class="item-icon">
-                            <li>
-                                <a href="single-doctor.html">
-                                    <i class="fas fa-plus"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="item-content">
-                        <h4 class="item-title">
-                            <a href="single-doctor.html">Dr. Zinia Zara</a>
-                        </h4>
-                        <p>Pregnancy</p>
-                        <a href="single-doctor.html" class="item-btn">MAKE AN APPOINTMENT</a>
-                    </div>
-                </div>
             </div>
         </div>
     </section>

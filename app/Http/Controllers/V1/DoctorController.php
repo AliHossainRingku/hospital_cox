@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Doctor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class DoctorController extends Controller
 {
@@ -24,13 +25,37 @@ class DoctorController extends Controller
 
     public function store(Request $request)
     {
-        $validateData = $request->validate([
-            'doctor_name' => ['required', 'unique:doctors', 'min:3']
-        ]);
-        if($validateData){
-            $doctors = Doctor::create($request->all());
-            return redirect()->back()->with('msg','Doctor save in database successfully!');
+        //dd($request->all());
+        $doctors = array();
+
+        $doctors['doctor_name'] = $request->doctor_name;
+        $doctors['department_id'] = $request->department_id;
+        $doctors['doctor_designation'] = $request->doctor_designation;
+        $doctors['doctor_description'] = $request->doctor_description;
+        $doctors['publication_status'] = $request->publication_status;
+
+        $news_id = DB::table('doctors')->select('id')->get();
+        $count = $news_id->count();
+        $max = $news_id->max('id')+1;
+
+        if ($request->hasFile('doctor_image')) {
+            
+            $image = $request->file('doctor_image');
+            $name = $max.'.'.$image->getClientOriginalExtension();
+            $destinationPath = public_path('uploaded_images');
+            $image->move($destinationPath, $name);
+            //$this->save();
+
+            $totalPathName = 'public/uploaded_images/'.$name;
+            //print_r($totalPathName) ;
+            $doctors['doctor_image'] = $totalPathName;
+            $success = DB::table('doctors')->insert($doctors);
+            return redirect()->back()->with('msg','Doctor added with image database successfully!'); 
         }
+
+        $success = DB::table('doctors')->insert($news);
+        return redirect()->back()->with('msg','Doctor added without image database successfully!');
+
     }
 
     public function show($doctorId){

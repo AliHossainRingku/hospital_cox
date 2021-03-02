@@ -31,13 +31,13 @@
 						                ?>
                                         @foreach($departments as $data)
                                         <li>
-                                            <a href="{{ url('/departments/'.$data->id.'') }}"> {{ $data->department_name }}  </a>
+                                            <a href="{{ url('/departments/'.$data->id) }}"> {{ $data->department_name }}  </a>
                                         </li>
                                         @endforeach
                                     </ul>
                                 </li>
                                 <li>
-                                    <a href="#">Doctors</a>
+                                    <a href="{{url('/doctors/')}}">Doctors</a>
                                     <ul class="dropdown-menu-col-1">
                                     	<?php $doctors = DB::table('doctors')
 						                    ->where('publication_status',1)
@@ -45,13 +45,13 @@
 						                ?>
                                         @foreach($doctors as $data)
                                         <li>
-                                            <a href="{{url('/doctors')}}"> {{ $data->doctor_name }}  </a>
+                                            <a href="{{url('/doctors/'.$data->id)}}"> {{ $data->doctor_name }}  </a>
                                         </li>
                                         @endforeach
                                     </ul>
                                 </li>
                                 <li>
-                                    <a href="#">Services</a>
+                                    <a href="{{url('/services')}}">Services</a>
                                     <ul class="dropdown-menu-col-1">
                                     	<?php $services = DB::table('services')
 						                    ->where('publication_status',1)
@@ -59,7 +59,7 @@
 						                ?>
                                         @foreach($services as $data)
                                         <li>
-                                            <a href="services.html"> {{ $data->service_name }}  </a>
+                                            <a href="{{url('/services/'.$data->id)}}"> {{ $data->service_name }}  </a>
                                         </li>
                                         @endforeach
                                     </ul>

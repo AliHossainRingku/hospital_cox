@@ -8,7 +8,7 @@
 
     <hr>
 
-    <form class="form-horizontal" action="{{URL::to('admin/doctors')}}" method="post">
+    <form class="form-horizontal" action="{{URL::to('admin/doctors')}}" method="post" enctype="multipart/form-data">
         {{csrf_field()}}
         <div class="form-group">
             <label class="control-label col-sm-2" for="doctor_name">Doctor Name:</label>
@@ -45,7 +45,12 @@
                 <textarea type="text" class="form-control" id="doctor_description" name="doctor_description" placeholder="Enter Doctor Description" required></textarea>
             </div>
         </div>
-
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="doctor_image">Profile Picture:</label>
+            <div class="col-sm-10">
+                <input type="file" class="form-control" id="doctor_image" name="doctor_image">
+            </div>
+        </div>
         <div class="form-group">
             <label class="control-label col-sm-2" for="publication_status">Publication Status:</label>
             <div class="col-sm-10">

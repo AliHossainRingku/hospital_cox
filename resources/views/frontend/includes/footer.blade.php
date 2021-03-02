@@ -114,7 +114,11 @@
         </div>
     </section>
     <section class="footer-bottom-wrap">
-        <div class="copyright">Copyright @ 2021 BGIL. All Rights Reserved.<a href="https://www.radiustheme.com">
-                Hospital Cox</a></div>
+        <div class="copyright">Copyright&copy;2021. All Rights Reserved.<a href="https://www.radiustheme.com">
+                Hospital Cox Ltd.</a>
+        </div>
+        	<span style="color:gray; font-size: 10px; font-style:italic; margin-left:200px; float: right;" >Developed By: <a href="https://www.facebook.com/alihossain.ringku">Ali Hossain Ringku</a>
+        	</span>
+        
     </section>
 </footer>

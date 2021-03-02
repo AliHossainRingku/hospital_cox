@@ -108,7 +108,8 @@ class HomeController extends Controller
     public function doctor($id)
     {
         $doctors = DB::table('doctors')
-            ->select('doctors.*')
+            ->join('departments', 'departments.id','=','doctors.department_id')
+            ->select('doctors.*','departments.*')
             ->where('doctors.id','=',$id)
             ->get();
         return view('frontend.single.doctor',['doctors'=>$doctors]);
