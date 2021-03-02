@@ -57,7 +57,7 @@ class HomeController extends Controller
         $doctors = DB::table('doctors')
             ->select('doctors.*')
             ->get();
-        return view('frontend.doctors',['doctors'=>$doctors]);
+        return view('frontend.manages.doctors',['doctors'=>$doctors]);
     }
 
     public function services()
@@ -65,7 +65,7 @@ class HomeController extends Controller
         $services = DB::table('services')
             ->select('services.*')
             ->get();        
-            return view('frontend.services',['services'=>$services]);
+            return view('frontend.manages.services',['services'=>$services]);
     }
 
     public function news()
@@ -73,7 +73,7 @@ class HomeController extends Controller
         $news = DB::table('news')
             ->select('news.*')
             ->get();
-        return view('frontend.news',['news'=>$news]);
+        return view('frontend.manages.news',['news'=>$news]);
     }    
 
     public function reviews()
@@ -81,7 +81,7 @@ class HomeController extends Controller
         $reviews = DB::table('reviews')
             ->select('reviews.*')
             ->get();
-        return view('frontend.reviews',['reviews'=>$reviews]);
+        return view('frontend.manages.reviews',['reviews'=>$reviews]);
     }
 
 
@@ -101,24 +101,8 @@ class HomeController extends Controller
             ->select('departments.*')
             ->where('departments.id','=',$id)
             ->get();
-      
-        $doctors = DB::table('doctors')
-            ->select('doctors.*')
-            ->get();
-        $services = DB::table('services')
-            ->select('services.*')
-            ->get();
-        $news = DB::table('news')
-            ->select('news.*')
-            ->get();
-        $banners = DB::table('banners')
-            ->select('banners.*')
-            ->get();
-        $reviews = DB::table('reviews')
-            ->select('reviews.*')
-            ->get();
-            
-        return view('frontend.single.department',['departments'=>$departments, 'doctors'=>$doctors, 'services'=>$services,  'news'=>$news, 'banners'=>$banners, 'reviews'=>$reviews, ]);
+    
+        return view('frontend.single.department',['departments'=>$departments]);
     }
 
     public function doctor($id)

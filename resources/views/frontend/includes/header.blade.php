@@ -45,7 +45,7 @@
 						                ?>
                                         @foreach($doctors as $data)
                                         <li>
-                                            <a href="doctor.html"> {{ $data->doctor_name }}  </a>
+                                            <a href="{{url('/doctors')}}"> {{ $data->doctor_name }}  </a>
                                         </li>
                                         @endforeach
                                     </ul>

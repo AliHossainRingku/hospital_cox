@@ -11,35 +11,35 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="description" content="">
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="frontend/img/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="{{asset('frontend')}}/img/favicon.png">
     <!-- Normalize CSS -->
-    <link rel="stylesheet" href="frontend/css/normalize.css">
+    <link rel="stylesheet" href="{{asset('frontend')}}/css/normalize.css">
     <!-- Main CSS -->
-    <link rel="stylesheet" href="frontend/css/main.css">
+    <link rel="stylesheet" href="{{asset('frontend')}}/css/main.css">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="frontend/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{asset('frontend')}}/css/bootstrap.min.css">
     <!-- Animate CSS -->
-    <link rel="stylesheet" href="frontend/css/animate.min.css">
+    <link rel="stylesheet" href="{{asset('frontend')}}/css/animate.min.css">
     <!-- Fontawesome CSS -->
-    <link rel="stylesheet" href="frontend/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="{{asset('frontend')}}/css/fontawesome-all.min.css">
     <!-- Flaticon CSS -->
-    <link rel="stylesheet" href="frontend/fonts/flaticon.css">
-    <link rel="stylesheet" href="frontend/css/font/flaticon.css">
+    <link rel="stylesheet" href="{{asset('frontend')}}/fonts/flaticon.css">
+    <link rel="stylesheet" href="{{asset('frontend')}}/css/font/flaticon.css">
     <!-- Meanmenu CSS -->
-    <link rel="stylesheet" href="frontend/css/meanmenu.min.css">
+    <link rel="stylesheet" href="{{asset('frontend')}}/css/meanmenu.min.css">
     <!-- Magnific Popup CSS -->
-    <link rel="stylesheet" href="frontend/css/magnific-popup.css">
+    <link rel="stylesheet" href="{{asset('frontend')}}/css/magnific-popup.css">
     <!-- Owl Carousel CSS -->
-    <link rel="stylesheet" href="frontend/vendor/OwlCarousel/owl.carousel.min.css">
-    <link rel="stylesheet" href="frontend/vendor/OwlCarousel/owl.theme.default.min.css">
+    <link rel="stylesheet" href="{{asset('frontend')}}/vendor/OwlCarousel/owl.carousel.min.css">
+    <link rel="stylesheet" href="{{asset('frontend')}}/vendor/OwlCarousel/owl.theme.default.min.css">
     <!-- Nivo slider CSS -->
-    <link rel="stylesheet" href="frontend/vendor/slider/css/nivo-slider.css" />
+    <link rel="stylesheet" href="{{asset('frontend')}}/vendor/slider/css/nivo-slider.css" />
     <!-- Elements CSS -->
-    <link rel="stylesheet" href="frontend/css/elements.css">
+    <link rel="stylesheet" href="{{asset('frontend')}}/css/elements.css">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="frontend/style.css">
+    <link rel="stylesheet" href="{{asset('frontend')}}/style.css">
     <!-- Modernizr Js -->
-    <script src="frontend/js/modernizr-3.5.0.min.js"></script>
+    <script src="{{asset('frontend')}}/js/modernizr-3.5.0.min.js"></script>
 
 </head>
 <body>
@@ -62,7 +62,7 @@
                     <!-- Slider Area End Here -->
                         
                         <!--Dynamic part start here -->
-                        @yield('home_content')
+                        @yield('content')
                         <!--Dynamic part ends here -->
 
 
@@ -73,36 +73,36 @@
 
            
             <!-- jquery-->
-            <script src="frontend/js/jquery-2.2.4.min.js"></script>
+            <script src="{{asset('frontend')}}/js/jquery-2.2.4.min.js"></script>
             <!-- Plugins js -->
-            <script src="frontend/js/plugins.js"></script>
+            <script src="{{asset('frontend')}}/js/plugins.js"></script>
             <!-- Popper js -->
-            <script src="frontend/js/popper.js"></script>
+            <script src="{{asset('frontend')}}/js/popper.js"></script>
             <!-- Bootstrap js -->
-            <script src="frontend/js/bootstrap.min.js"></script>
+            <script src="{{asset('frontend')}}/js/bootstrap.min.js"></script>
             <!-- Counterup Js -->
-            <script src="frontend/js/jquery.counterup.min.js"></script>
+            <script src="{{asset('frontend')}}/js/jquery.counterup.min.js"></script>
             <!-- WOW JS -->
-            <script src="frontend/js/wow.min.js"></script>
+            <script src="{{asset('frontend')}}/js/wow.min.js"></script>
             <!-- Waypoints Js -->
-            <script src="frontend/js/waypoints.min.js"></script>
+            <script src="{{asset('frontend')}}/js/waypoints.min.js"></script>
             <!-- Parallaxie Js -->
-            <script src="frontend/js/parallaxie.js"></script>
+            <script src="{{asset('frontend')}}/js/parallaxie.js"></script>
             <!-- Nivo slider js -->
-            <script src="frontend/vendor/slider/js/jquery.nivo.slider.js"></script>
-            <script src="frontend/vendor/slider/home.js"></script>
+            <script src="{{asset('frontend')}}/vendor/slider/js/jquery.nivo.slider.js"></script>
+            <script src="{{asset('frontend')}}/vendor/slider/home.js"></script>
             <!-- Owl Carousel Js -->
-            <script src="frontend/vendor/OwlCarousel/owl.carousel.min.js"></script>
+            <script src="{{asset('frontend')}}/vendor/OwlCarousel/owl.carousel.min.js"></script>
             <!-- Meanmenu Js -->
-            <script src="frontend/js/jquery.meanmenu.min.js"></script>
+            <script src="{{asset('frontend')}}/js/jquery.meanmenu.min.js"></script>
             <!-- Magnific Popup Js -->
-            <script src="frontend/js/jquery.magnific-popup.min.js"></script>
+            <script src="{{asset('frontend')}}/js/jquery.magnific-popup.min.js"></script>
             <!-- Isotope Js -->
-            <script src="frontend/js/isotope.pkgd.min.js"></script>
+            <script src="{{asset('frontend')}}/js/isotope.pkgd.min.js"></script>
             <!-- Smoothscroll Js -->
-            <script src="frontend/js/smoothscroll.min.js"></script>
+            <script src="{{asset('frontend')}}/js/smoothscroll.min.js"></script>
             <!-- Custom Js -->
-            <script src="frontend/js/main.js"></script>
+            <script src="{{asset('frontend')}}/js/main.js"></script>
 
     </div>
 

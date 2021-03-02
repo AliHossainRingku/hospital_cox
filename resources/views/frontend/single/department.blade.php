@@ -1,8 +1,27 @@
 @extends('frontend.home_layout')
 
-@section('home_content')
+@section('content')
 
-<h1>DDDDDDDDDDDDDDDDDD</h1>
+<div class="container">
+	<div class="main-content">
+		<h1>Departments</h1>
+		@foreach($departments as $data)
+		<h1>{{$data->department_name}}</h1>
+		@endforeach
+	</div>
+</div>
+
+<style type="text/css">
+	.container{
+		background-color: red;
+	}
+	.main-content{
+		margin-top: 130px;
+		
+	}
+</style>
     
+
+
 
 @endsection

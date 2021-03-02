@@ -1,6 +1,6 @@
 @extends('frontend.home_layout')
 
-@section('home_content')
+@section('content')
 
 <div class="slider-area slider-layout3 bg-light-primary">
     <div class="bend niceties preview-1">

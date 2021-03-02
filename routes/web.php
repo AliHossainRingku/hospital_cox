@@ -43,7 +43,7 @@ Route::get('reviews', [HomeController::class, 'reviews']);
 
 //SINGLE PAGE 
 Route::get('banners/{id}', [HomeController::class, 'banner']);
-Route::get('departments/{id}', [HomeController::class, 'department']);
+Route::get('departments/{department}', [HomeController::class, 'department']);
 Route::get('doctors/{id}', [HomeController::class, 'doctor']);
 Route::get('news/{id}', [HomeController::class, 'new']);
 Route::get('services/{id}', [HomeController::class, 'service']);
