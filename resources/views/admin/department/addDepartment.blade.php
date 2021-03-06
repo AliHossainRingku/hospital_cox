@@ -8,19 +8,26 @@
 
     <hr>
 
-    <form class="form-horizontal" action="{{URL::to('admin/departments')}}" method="post">
+    <form class="form-horizontal" action="{{URL::to('admin/departments')}}" method="post" enctype="multipart/form-data">
         {{csrf_field()}}
     <div class="form-group">
-        <label class="control-label col-sm-2" for="category_name">Department Name:</label>
+        <label class="control-label col-sm-2" for="department_name">Department Name:</label>
         <div class="col-sm-10">
             <input type="text" class="form-control" id="department_name" name="department_name" placeholder="Enter Department Name" required>
         </div>
     </div>
 
     <div class="form-group">
-        <label class="control-label col-sm-2" for="category_description">Department Description:</label>
+        <label class="control-label col-sm-2" for="department_description">Department Description:</label>
         <div class="col-sm-10">
             <textarea type="text" class="form-control" id="department_description" name="department_description" placeholder="Enter Department Description" required></textarea>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="department_image">Department Image:</label>
+        <div class="col-sm-10">
+            <input type="file" class="form-control" id="department_image" name="department_image" required>
         </div>
     </div>
 

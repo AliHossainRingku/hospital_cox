@@ -12,6 +12,7 @@
             <th>SI</th>
             <th>Department Name</th>
             <th>Department Description</th>
+            <th>Image</th>
             <th>Publication Status</th>
             <th>Action</th>
         </tr>
@@ -26,6 +27,7 @@
                 <td>{{ ++$i }}</td>
                 <td>{{ $department->department_name }}</td>
                 <td>{{ $department->department_description}}</td>
+                <td><img src="{{ asset($department->department_image) }}" alt="Image" style="height: 70px; width: 100px"></td>
                 <td><?php if($department->publication_status == 1){ ?> <a style="color: green">Published</a><?php } else{ ?> <a style="color: darkred">Unpublished</a><?php } ?></td>
                 <td>
                     <?php if($department->publication_status == 1 ){ ?>

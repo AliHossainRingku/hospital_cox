@@ -17,7 +17,7 @@ class CreateServicesTable extends Migration
             $table->increments('id');
             $table->string('service_name');
             $table->string('service_image');
-            $table->string('service_description')->nullable();
+            $table->text('service_description')->nullable();
             $table->string('available_time')->nullable();
             
             $table->boolean('publication_status')->default(0);

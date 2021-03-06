@@ -13,7 +13,7 @@
             <th>News Headline</th>
             <th>News Description</th>
             <th>Image</th>
-            <th>News Link</th>
+            <th>News URL</th>
             <th>Publication Status</th>
             <th>Action</th>
         </tr>
@@ -28,7 +28,7 @@
                 <td>{{ ++$i }}</td>
                 <td>{{ $new->news_title }}</td>
                 <td>{{ $new->news_description}}</td>
-                <td>{{ $new->news_image}}</td>
+                <td><img src="{{asset($new->news_image)}}" style="height: 60px; width: 100px;"></td>
                 <td>{{ $new->news_url}}</td>
                 <td><?php if($new->publication_status == 1){ ?> <a style="color: green">Published</a><?php } else{ ?> <a style="color: darkred">Unpublished</a><?php } ?></td>
                 <td>

@@ -10,17 +10,16 @@
                 ->get();
             ?>
             @foreach($banners as $banner)
-            <img src="frontend/img/slider/slide3-1.jpg" alt="slider" title="#slider-direction-1" />
-            <img src="frontend/img/slider/slide3-2.jpg" alt="slider" title="#slider-direction-2" />
-            <img src="frontend/img/slider/slide3-3.jpg" alt="slider" title="#slider-direction-3" />
+            <img src="{{$banner->banner_image}}" alt="slider" title="#slider-direction-{{$banner->id}}" />
+            
             @endforeach
         </div>
         @foreach($banners as $banner)
-        <div id="slider-direction-1" class="t-cn slider-direction">
+        <div id="slider-direction-{{$banner->id}}" class="t-cn slider-direction">
             <div class="slider-content s-tb slide-1">
                 <div class="text-left title-container s-tb-c">
                     <div class="container">
-                        <div class="slider-big-text">Introducing<span>{{$banner->banner_title}}</span></div>
+                        <div class="slider-big-text">{{$banner->banner_title}}<span>{{$banner->banner_subtitle}}</span></div>
                         <p class="slider-paragraph padding-right">{{$banner->banner_description}}</p>
                         <div class="slider-btn-area d-none d-xl-block">
                             <a href="#" class="item-light-btn">Read More<i class="fas fa-chevron-right"></i></a>
@@ -339,7 +338,7 @@
                     </div>
                     <div class="item-content">
                         <h4 class="item-title">
-                            <a href="single-doctor.html">{{$doctor->doctor_name}}</a>
+                            <a href="{{url('doctors/'.$doctor->id)}}">{{$doctor->doctor_name}}</a>
                         </h4>
                         <p>{{$doctor->doctor_designation}}</p>
                         <a href="{{url('/doctors/'.$doctor->id)}}" class="item-btn">MAKE AN APPOINTMENT</a>
@@ -389,96 +388,27 @@
                     </div>
                 </div>
                 <div class="row featuredContainer zoom-gallery">
+                    <?php $departments = DB::table('departments')
+                        ->where('publication_status',1)
+                        ->get();
+                    ?> 
+                    @foreach($departments as $data)
                     <div class="col-lg-4 col-md-6 col-12 dental cardiology">
                         <div class="gallery-box-layout1">
-                            <img src="frontend/img/gallery/gallery7.jpg" alt="gallery" class="img-fluid">
+                            <img src="{{ asset($data->department_image) }}" alt="gallery" class="img-fluid" style="width: 426px; height: 283px">
                             <div class="item-icon">
-                                <a href="frontend/img/gallery/gallery7.jpg" class="popup-zoom" data-fancybox-group="gallery"
+                                <a href="{{ asset($data->department_image) }}" class="popup-zoom" data-fancybox-group="gallery"
                                     title="">
                                     <i class="flaticon-search"></i>
                                 </a>
                             </div>
                             <div class="item-content">
-                                <h3 class="item-title">Modern Clinic</h3>
+                                <h3 class="item-title">{{$data->department_name}}</h3>
                                 <span class="title-ctg">Cancer Care, Cardiac</span>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-6 col-12 orthopaedics">
-                        <div class="gallery-box-layout1">
-                            <img src="frontend/img/gallery/gallery8.jpg" alt="gallery" class="img-fluid">
-                            <div class="item-icon">
-                                <a href="frontend/img/gallery/gallery8.jpg" class="popup-zoom" data-fancybox-group="gallery"
-                                    title="">
-                                    <i class="flaticon-search"></i>
-                                </a>
-                            </div>
-                            <div class="item-content">
-                                <h3 class="item-title">Modern Clinic</h3>
-                                <span class="title-ctg">Cancer Care, Cardiac</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-12 dental eye">
-                        <div class="gallery-box-layout1">
-                            <img src="frontend/img/gallery/gallery9.jpg" alt="gallery" class="img-fluid">
-                            <div class="item-icon">
-                                <a href="img/gallery/gallery9.jpg" class="popup-zoom" data-fancybox-group="gallery"
-                                    title="">
-                                    <i class="flaticon-search"></i>
-                                </a>
-                            </div>
-                            <div class="item-content">
-                                <h3 class="item-title">Modern Clinic</h3>
-                                <span class="title-ctg">Cancer Care, Cardiac</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-12 cardiology orthopaedics">
-                        <div class="gallery-box-layout1">
-                            <img src="frontend/img/gallery/gallery10.jpg" alt="gallery" class="img-fluid">
-                            <div class="item-icon">
-                                <a href="frontend/img/gallery/gallery10.jpg" class="popup-zoom" data-fancybox-group="gallery"
-                                    title="">
-                                    <i class="flaticon-search"></i>
-                                </a>
-                            </div>
-                            <div class="item-content">
-                                <h3 class="item-title">Modern Clinic</h3>
-                                <span class="title-ctg">Cancer Care, Cardiac</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-12 orthopaedics">
-                        <div class="gallery-box-layout1">
-                            <img src="frontend/img/gallery/gallery11.jpg" alt="gallery" class="img-fluid">
-                            <div class="item-icon">
-                                <a href="frontend/img/gallery/gallery11.jpg" class="popup-zoom" data-fancybox-group="gallery"
-                                    title="">
-                                    <i class="flaticon-search"></i>
-                                </a>
-                            </div>
-                            <div class="item-content">
-                                <h3 class="item-title">Modern Clinic</h3>
-                                <span class="title-ctg">Cancer Care, Cardiac</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-12 orthopaedics">
-                        <div class="gallery-box-layout1">
-                            <img src="frontend/img/gallery/gallery12.jpg" alt="gallery" class="img-fluid">
-                            <div class="item-icon">
-                                <a href="frontend/img/gallery/gallery12.jpg" class="popup-zoom" data-fancybox-group="gallery"
-                                    title="">
-                                    <i class="flaticon-search"></i>
-                                </a>
-                            </div>
-                            <div class="item-content">
-                                <h3 class="item-title">Modern Clinic</h3>
-                                <span class="title-ctg">Cancer Care, Cardiac</span>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach 
                 </div>
             </div>
         </div>
@@ -552,8 +482,13 @@
                 data-r-large-dots="false" data-r-extra-large="1" data-r-extra-large-nav="false"
                 data-r-extra-large-dots="false">
                 <div class="item">
+                    <?php $reviews = DB::table('reviews')
+                                            ->where('publication_status',1)
+                                            ->get();
+                    ?>
+                    @foreach($reviews as $data)
                     <div class="testmonial-box-layout2">
-                        <h4 class="item-title">Josef Ardogan <span>/ CEO Artland</span></h4>
+                        <h4 class="item-title">{{$data->user_name}} <span>/ CEO Artland</span></h4>
                         <ul class="rating">
                             <li>
                                 <i class="fa fa-star" aria-hidden="true"></i>
@@ -571,30 +506,9 @@
                                 <i class="fa fa-star" aria-hidden="true"></i>
                             </li>
                         </ul>
-                        <p>"Eodem modo typi, qui nunc nobis videntur parum clar fiant sollemnes in futurum. Lorem
-                            ipsum dolor sit amet tetuer adipiscing elit, sed diam nonu."</p>
+                        <p>"{{$data->review_description}}"</p>
                     </div>
-                    <div class="testmonial-box-layout2">
-                        <h4 class="item-title">Josef Ardogan <span>/ CEO Artland</span></h4>
-                        <ul class="rating">
-                            <li>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                            </li>
-                            <li>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                            </li>
-                            <li>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                            </li>
-                            <li>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                            </li>
-                            <li>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                            </li>
-                        </ul>
-                        <p>"Eodem modo typi, qui nunc nobis videntur parum clar fiant sollemnes in futurum."</p>
-                    </div>
+                    @endforeach
                 </div>
                 <div class="item">
                     <div class="testmonial-box-layout2">

@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row no-gutters d-flex align-items-center">
                 <div class="col-lg-2 col-md-2 logo-area-layout1">
-                    <a href="index.html" class="temp-logo">
+                    <a href="{{url('/')}}" class="temp-logo">
                         <img src="frontend/img/logo-light.png" alt="logo" class="img-fluid">
                     </a>
                 </div>

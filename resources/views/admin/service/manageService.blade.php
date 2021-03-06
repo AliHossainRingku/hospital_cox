@@ -12,6 +12,7 @@
             <th>SI</th>
             <th>Service Name</th>
             <th>Service Description</th>
+            <th>Image</th>
             <th>Publication Status</th>
             <th>Action</th>
         </tr>
@@ -26,6 +27,7 @@
                 <td>{{ ++$i }}</td>
                 <td>{{ $service->service_name }}</td>
                 <td>{{ $service->service_description}}</td>
+                <td><img src="{{ asset($service->service_image) }}" style="height: 60px; width: 100px"></td>
                 <td><?php if($service->publication_status == 1){ ?> <a style="color: green">Published</a><?php } else{ ?> <a style="color: darkred">Unpublished</a><?php } ?></td>
                 <td>
                     <?php if($service->publication_status == 1 ){ ?>

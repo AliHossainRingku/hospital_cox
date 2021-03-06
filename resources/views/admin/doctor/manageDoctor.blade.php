@@ -31,7 +31,7 @@
                 <td>{{ $department->department_id}}</td>
                 <td>{{ $department->doctor_designation}}</td>
                 <td>{{ $department->doctor_description}}</td>
-                <td> {{ $department->doctor_image}} <img src="{{$department->doctor_image}}" style="height: 70px; width: 100px"></td>
+                <td><img src="{{asset($department->doctor_image)}}" style="height: 70px; width: 100px"></td>
 
                 <td><?php if($department->publication_status == 1){ ?> <a style="color: green">Published</a><?php } else{ ?> <a style="color: darkred">Unpublished</a><?php } ?></td>
                 <td>

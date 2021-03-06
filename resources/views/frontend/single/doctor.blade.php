@@ -132,7 +132,7 @@
             <div class="order-xl-1 order-lg-1 sidebar-widget-area sidebar-break-md col-xl-3 col-lg-4 col-md-12 col-12">
 
                 <div class="widget widget-about-team">
-                    <img src="{{asset('frontend')}}/img/team/team20.png" class="img-fluid" alt="team">
+                    <img src="{{asset($data->doctor_image)}}" class="img-fluid" alt="team">
                     <div class="item-content">
                         <h3 class="item-title">{{ $data->doctor_name}}</h3>
                         <p class="item-ctg">{{ $data->department_name}}</p>

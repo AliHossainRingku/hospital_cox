@@ -8,7 +8,7 @@
 
     <hr>
 
-    <form class="form-horizontal" action="{{URL::to('admin/services')}}" method="post">
+    <form class="form-horizontal" action="{{URL::to('admin/services')}}" method="post" enctype="multipart/form-data">
         {{csrf_field()}}
     <div class="form-group">
         <label class="control-label col-sm-2" for="service_name">Service Name:</label>
@@ -21,6 +21,20 @@
         <label class="control-label col-sm-2" for="service_description">Service Description:</label>
         <div class="col-sm-10">
             <textarea type="text" class="form-control" id="service_description" name="service_description" placeholder="Enter Service Description" required></textarea>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="available_time">Available Time:</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="available_time" name="available_time" placeholder="Enter Available Time" required>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="service_image">Service Image:</label>
+        <div class="col-sm-10">
+            <input type="file" class="form-control" id="service_image" name="service_image" required>
         </div>
     </div>
 

@@ -8,7 +8,7 @@
 
     <hr>
 
-    <form class="form-horizontal" action="{{URL::to('admin/reviews')}}" method="post">
+    <form class="form-horizontal" action="{{URL::to('admin/reviews')}}" method="post" enctype="multipart/form-data">
         {{csrf_field()}}
     <div class="form-group">
         <label class="control-label col-sm-2" for="user_name">User Name:</label>
@@ -23,6 +23,20 @@
             <textarea type="text" class="form-control" id="review_description" name="review_description" placeholder="Enter Review Description" required></textarea>
         </div>
     </div>
+
+    <div class="form-group">
+            <label class="control-label col-sm-2" for="rating">Rating:</label>
+            <div class="col-sm-10">
+                <select type="text" class="form-control" id="rating" name="rating">
+                    <option>Select Rating</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                </select>
+            </div>
+        </div>
 
     <div class="form-group">
         <label class="control-label col-sm-2" for="publication_status">Publication Status:</label>

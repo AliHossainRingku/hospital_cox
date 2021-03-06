@@ -18,6 +18,7 @@ class CreateDoctorsTable extends Migration
             $table->integer('department_id')->unsigned();
             $table->string('doctor_name');
             $table->string('doctor_designation')->nullable();
+            $table->text('doctor_description')->nullable();
             $table->string('doctor_image')->nullable();
             $table->string('specialist_at')->nullable();
             $table->string('available_time')->nullable();

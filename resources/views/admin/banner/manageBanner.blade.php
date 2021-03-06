@@ -11,8 +11,8 @@
         <tr>
             <th>SI</th>
             <th>Banner Title</th>
-            <th>Image</th>
             <th>Doctor Description</th>
+            <th>Image</th>
             <th>Publication Status</th>
             <th>Action</th>
         </tr>
@@ -26,8 +26,8 @@
             <tr>
                 <td>{{ ++$i }}</td>
                 <td>{{ $banner->banner_title }}</td>
-                <td>{{ $banner->banner_image}}</td>
                 <td>{{ $banner->banner_description}}</td>
+                <td><img src="{{asset($banner->banner_image)}}" style="height: 70px; width: 100px;"></td>
                 <td><?php if($banner->publication_status == 1){ ?> <a style="color: green">Published</a><?php } else{ ?> <a style="color: darkred">Unpublished</a><?php } ?></td>
                 <td>
                     <?php if($banner->publication_status == 1 ){ ?>

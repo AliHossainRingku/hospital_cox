@@ -34,20 +34,21 @@ class DoctorController extends Controller
         $doctors['doctor_description'] = $request->doctor_description;
         $doctors['publication_status'] = $request->publication_status;
 
-        $news_id = DB::table('doctors')->select('id')->get();
-        $count = $news_id->count();
-        $max = $news_id->max('id')+1;
+        $doctor_id = DB::table('doctors')->select('id')->get();
+        $count = $doctor_id->count();
+        $max = $doctor_id->max('id')+1;
 
         if ($request->hasFile('doctor_image')) {
             
             $image = $request->file('doctor_image');
             $name = $max.'.'.$image->getClientOriginalExtension();
-            $destinationPath = public_path('uploaded_images');
+            $destinationPath = public_path('uploaded_images/doctors');
             $image->move($destinationPath, $name);
             //$this->save();
 
-            $totalPathName = 'public/uploaded_images/'.$name;
-            //print_r($totalPathName) ;
+            //$totalPathName = 'public/uploaded_images/'.$name;
+            //print_r($totalPathName) ;  
+            $totalPathName = 'uploaded_images/doctors/'.$name;
             $doctors['doctor_image'] = $totalPathName;
             $success = DB::table('doctors')->insert($doctors);
             return redirect()->back()->with('msg','Doctor added with image database successfully!'); 

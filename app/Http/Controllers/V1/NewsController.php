@@ -26,13 +26,44 @@ class NewsController extends Controller
 
     public function store(Request $request)
     {
-        $validateData = $request->validate([
-            'news_title' => ['required', 'unique:news', 'min:3']
-        ]);
-        if($validateData){
-            $department = News::create($request->all());
-            return redirect()->back()->with('msg','News save in database successfully!');
+        // $validateData = $request->validate([
+        //     'news_title' => ['required', 'unique:news', 'min:3']
+        // ]);
+        // if($validateData){
+        //     $department = News::create($request->all());
+        //     return redirect()->back()->with('msg','News save in database successfully!');
+        // }
+
+        //dd($request->all());
+        $news = array();
+
+        $news['news_title'] = $request->news_title;
+        $news['news_description'] = $request->news_description;
+        $news['news_url'] = $request->news_url;
+        $news['publication_status'] = $request->publication_status;
+
+        $dep_id = DB::table('news')->select('id')->get();
+        $count = $dep_id->count();
+        $max = $dep_id->max('id')+1;
+
+        if ($request->hasFile('news_image')) {
+            
+            $image = $request->file('news_image');
+            $name = $max.'.'.$image->getClientOriginalExtension();
+            $destinationPath = public_path('uploaded_images/news');
+            $image->move($destinationPath, $name);
+            //$this->save();
+
+            //$totalPathName = 'public/uploaded_images/'.$name;
+            //print_r($totalPathName) ;  
+            $totalPathName = 'uploaded_images/news/'.$name;
+            $news['news_image'] = $totalPathName;
+            $success = DB::table('news')->insert($news);
+            return redirect()->back()->with('msg','News added with image database successfully!'); 
         }
+
+        $success = DB::table('news')->insert($news);
+        return redirect()->back()->with('msg','News added without image database successfully!');
     }
 
     public function show($departmentId){

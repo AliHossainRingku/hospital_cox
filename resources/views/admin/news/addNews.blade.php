@@ -8,7 +8,7 @@
 
     <hr>
 
-    <form class="form-horizontal" action="{{URL::to('admin/news')}}" method="post">
+    <form class="form-horizontal" action="{{URL::to('admin/news')}}" method="post" enctype="multipart/form-data">
         {{csrf_field()}}
     <div class="form-group">
         <label class="control-label col-sm-2" for="news_title">News Headline:</label>
@@ -21,6 +21,20 @@
         <label class="control-label col-sm-2" for="news_description">News Description:</label>
         <div class="col-sm-10">
             <textarea type="text" class="form-control" id="news_description" name="news_description" placeholder="Enter News Description in Details" required></textarea>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="news_image">News Image:</label>
+        <div class="col-sm-10">
+            <input type="file" class="form-control" id="department_image" name="news_image" required>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="news_title">News Url:</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="news_url" name="news_url" placeholder="Enter News URL" required>
         </div>
     </div>
 
