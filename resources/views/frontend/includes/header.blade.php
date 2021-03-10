@@ -7,7 +7,7 @@
                         <img src="frontend/img/logo-light.png" alt="logo" class="img-fluid">
                     </a>
                 </div>
-                <div class="col-lg-7 col-md-7 possition-static">
+                <div class="col-lg-8 col-md-8 possition-static">
                     <div class="template-main-menu">
                         <nav id="dropdown">
                             <ul>
@@ -15,11 +15,21 @@
                                     <a href="{{url('/')}}">Home</a>
                                 </li>
                                 <li>
-                                    <a href="#">About</a>
+                                    <a href="{{url('/about')}}">About</a>
                                     <ul class="dropdown-menu-col-1">
                                         <li><a href="about1.html">Objectives</a></li>
                                         <li><a href="about2.html">Mission & Vision</a></li>
                                         <li><a href="about3.html">Company Profile</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="{{url('/more')}}">More</a>
+                                    <ul class="dropdown-menu-col-1">
+                                        <li><a href="about1.html">Floor Plan</a></li>
+                                        <li><a href="about2.html">Outdoor Services</a></li>
+                                        <li><a href="about3.html">Indoor Services</a></li>
+                                        <li><a href="about3.html">Major Components</a></li>
+                                        <li><a href="about3.html">Diagnostic and Test</a></li>
                                     </ul>
                                 </li>                                        
                                 <li>
@@ -65,7 +75,7 @@
                                     </ul>
                                 </li>
                                 <li>
-                                    <a href="#">News</a>
+                                    <a href="{{url('/news')}}">News</a>
                                     <ul class="dropdown-menu-col-1">
                                         <li>
                                             <a href="{{url('/news')}}">News and Events</a>
@@ -86,7 +96,7 @@
                         </nav>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-3">
+                <div class="col-lg-2 col-md-2">
                     <div class="header-action-items-layout1">
                         <ul>
                             <li class="d-none d-xl-block">
@@ -108,3 +118,9 @@
         </div>
     </div>
 </header>
+
+<style type="text/css">
+    .template-main-menu a{
+        color: gray !important;
+    }
+</style>

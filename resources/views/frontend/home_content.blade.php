@@ -144,74 +144,25 @@
                 <div class="col-xl-8 col-12">
                     <div class="departments-box-layout7">
                         <div class="section-title">
-                            <h2 class="title">Our Departments</h2>
+                            <h2 class="title">Our Services</h2>
                             <div class="sub-title">Dedicated Services</div>
                         </div>
                         <div class="row gutters-5">
+                            <?php $services = DB::table('services')
+                                ->where('publication_status',1)
+                                ->get();
+                            ?>
+                            @foreach($services as $data)
                             <div class="col-lg-3 col-md-6 col-sm-6 col-12">
                                 <div class="single-box">
                                     <i class="flaticon-medical"></i>
                                     <p>
-                                        <a href="#">Dental Care</a>
+                                        <a href="#">{{$data->service_name}}</a>
                                     </p>
                                 </div>
                             </div>
-                            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-                                <div class="single-box">
-                                    <i class="flaticon-pills"></i>
-                                    <p>
-                                        <a href="#">Medicine</a>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-                                <div class="single-box">
-                                    <i class="flaticon-human-hip"></i>
-                                    <p>
-                                        <a href="#">Orthopedic</a>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-                                <div class="single-box">
-                                    <i class="flaticon-heart"></i>
-                                    <p>
-                                        <a href="#">Cardeology</a>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-                                <div class="single-box">
-                                    <i class="flaticon-stethoscope"></i>
-                                    <p>
-                                        <a href="#">Primary Care</a>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-                                <div class="single-box">
-                                    <i class="flaticon-medical-1"></i>
-                                    <p>
-                                        <a href="#">Eye Care</a>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-                                <div class="single-box">
-                                    <i class="flaticon-ambulance"></i>
-                                    <p>
-                                        <a href="#">Emergency</a>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-                                <div class="single-box">
-                                    <i class="flaticon-first-aid-kit"></i>
-                                    <p>
-                                        <a href="#">Skilled Doctors</a>
-                                    </p>
-                                </div>
-                            </div>
+                            @endforeach
+
                         </div>
                     </div>
                 </div>
@@ -380,11 +331,11 @@
             <div class="isotope-wrap">
                 <div class="text-center">
                     <div class="isotope-classes-tab isotop-btn">
-                        <a href="#" class="current nav-item" data-filter="*">All</a>
-                        <a href="#" class="nav-item" data-filter=".dental">Dental</a>
+                        <a href="#" class="current nav-item" data-filter="*">All Departments</a>
+                        <!--a href="#" class="nav-item" data-filter=".dental">Dental</a>
                         <a href="#" class="nav-item" data-filter=".eye">Eye</a>
                         <a href="#" class="nav-item" data-filter=".cardiology">Cardiology</a>
-                        <a href="#" class="nav-item" data-filter=".orthopaedics">Orthopaedics</a>
+                        <a href="#" class="nav-item" data-filter=".orthopaedics">Orthopaedics</a-->
                     </div>
                 </div>
                 <div class="row featuredContainer zoom-gallery">
@@ -429,7 +380,7 @@
                             <a href="tel:+12344092888"><i class="fas fa-phone"></i>+123 44092 888</a>
                         </div>
                         <div class="call-to-action-btn">
-                            <a href="#" class="item-btn">Make an Appointment</a>
+                            <a href="#" class="item-btn">Make Call for Appointment</a>
                         </div>
                     </div>
                 </div>
@@ -443,23 +394,21 @@
             <div class="section-heading heading-dark heading-layout5">
                 <h2>Our Latest News</h2>
             </div>
+            <?php $news = DB::table('news')
+                ->where('publication_status',1)
+                ->get();
+            ?>
+            @foreach($news as $data)
             <div class="blog-box-layout1">
-                <h3 class="item-title"><a href="single-news.html">My dental office need a blog area galley
-                        printingdern care to ailing dear.</a></h3>
+                <h3 class="item-title"><a href="{{url('/news/'.$data->id)}}">{{$data->news_title}}</a></h3>
                 <ul class="entry-meta">
-                    <li><i class="far fa-calendar-alt"></i>21 July, 20 18</li>
+                    <li><i class="far fa-calendar-alt"></i>{{$data->created_at}}</li>
                     <li><i class="fas fa-user"></i>Posted by <a href="#">admin</a></li>
                 </ul>
             </div>
-            <div class="blog-box-layout1">
-                <h3 class="item-title"><a href="single-news.html">My dental office need a blog area galley
-                        printingdern care to ailing dear.</a></h3>
-                <ul class="entry-meta">
-                    <li><i class="far fa-calendar-alt"></i>21 July, 20 18</li>
-                    <li><i class="fas fa-user"></i>Posted by <a href="#">admin</a></li>
-                </ul>
-            </div>
-            <a class="blog-btn" href="news1.html">SEE ALL NEWS<i class="fas fa-chevron-right"></i></a>
+            @endforeach
+
+            <a class="blog-btn" href="{{url('/news')}}">SEE ALL NEWS<i class="fas fa-chevron-right"></i></a>
         </div>
         <div class="single-item bg-common" data-bg-image="frontend/img/figure/figure9.png">
             <div class="section-heading heading-light heading-layout5">
@@ -511,49 +460,7 @@
                     @endforeach
                 </div>
                 <div class="item">
-                    <div class="testmonial-box-layout2">
-                        <h4 class="item-title">Josef Ardogan <span>/ CEO Artland</span></h4>
-                        <ul class="rating">
-                            <li>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                            </li>
-                            <li>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                            </li>
-                            <li>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                            </li>
-                            <li>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                            </li>
-                            <li>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                            </li>
-                        </ul>
-                        <p>"Eodem modo typi, qui nunc nobis videntur parum clar fiant sollemnes in futurum. Lorem
-                            ipsum dolor sit amet tetuer adipiscing elit, sed diam nonu."</p>
-                    </div>
-                    <div class="testmonial-box-layout2">
-                        <h4 class="item-title">Josef Ardogan <span>/ CEO Artland</span></h4>
-                        <ul class="rating">
-                            <li>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                            </li>
-                            <li>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                            </li>
-                            <li>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                            </li>
-                            <li>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                            </li>
-                            <li>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                            </li>
-                        </ul>
-                        <p>"Eodem modo typi, qui nunc nobis videntur parum clar fiant sollemnes in futurum."</p>
-                    </div>
+                    
                 </div>
             </div>
         </div>

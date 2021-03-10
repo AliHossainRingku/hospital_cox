@@ -30,6 +30,7 @@ Route::get('/admin/home', function () {
     return view('admin.admin_layout');
 });
 
+
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
@@ -40,6 +41,8 @@ Route::get('doctors', [HomeController::class, 'doctors']);
 Route::get('news', [HomeController::class, 'news']);
 Route::get('services', [HomeController::class, 'services']);
 Route::get('reviews', [HomeController::class, 'reviews']);
+Route::get('more', [HomeController::class, 'moreabout']);
+
 
 //SINGLE PAGE 
 Route::get('banners/{id}', [HomeController::class, 'banner']);

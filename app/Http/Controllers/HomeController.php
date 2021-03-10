@@ -14,26 +14,7 @@ class HomeController extends Controller
 
     public function index()
     {
-        // $departments = DB::table('departments')
-        //     ->select('departments.*')
-        //     ->get();
-        // $doctors = DB::table('doctors')
-        //     ->select('doctors.*')
-        //     ->get();
-        // $services = DB::table('services')
-        //     ->select('services.*')
-        //     ->get();
-        // $news = DB::table('news')
-        //     ->select('news.*')
-        //     ->get();
-        // $banners = DB::table('banners')
-        //     ->select('banners.*')
-        //     ->get();
-        // $reviews = DB::table('reviews')
-        //     ->select('reviews.*')
-        //     ->get();
-
-        return view('frontend.home_content');//,['departments'=>$departments, 'doctors'=>$doctors, 'services'=>$services, 'news'=>$news, 'banners'=>$banners, 'reviews'=>$reviews,]
+        return view('frontend.home_content');
     }
 
     public function banners()
@@ -140,6 +121,11 @@ class HomeController extends Controller
             ->where('reviews.id','=',$id)
             ->get();
         return view('frontend.single.review',['reviews'=>$reviews]);
+    }
+
+    public function moreabout()
+    {
+        return view('frontend.single.moreabout');
     }
 
 }

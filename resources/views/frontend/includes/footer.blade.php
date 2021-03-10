@@ -14,9 +14,9 @@
                         </div>
                         <div class="footer-contact-info">
                             <ul>
-                                <li><i class="fas fa-map-marker-alt"></i>59 Street, 1200 Techpark</li>
-                                <li><i class="fas fa-phone"></i>+59888555</li>
-                                <li><i class="far fa-envelope"></i>medilink@gmail.com</li>
+                                <li><i class="fas fa-map-marker-alt"></i>59 Street, 1208 Dhanmondi</li>
+                                <li><i class="fas fa-phone"></i>+880 1788 855 500</li>
+                                <li><i class="far fa-envelope"></i>hospitalcox@gmail.com</li>
                             </ul>
                         </div>
                     </div>
@@ -28,12 +28,15 @@
                         </div>
                         <div class="footer-departments">
                             <ul>
-                                <li><a href="single-departments.html">Dental Care</a></li>
-                                <li><a href="single-departments.html">Medicine</a></li>
-                                <li><a href="single-departments.html">Orthopedic</a></li>
-                                <li><a href="single-departments.html">Emergency</a></li>
-                                <li><a href="single-departments.html">Skilled Doctors</a></li>
-                                <li><a href="single-departments.html">Certified Clinic</a></li>
+                                <?php $departments = DB::table('departments')
+                                    ->where('publication_status',1)
+                                    ->get();
+                                ?>
+                                @foreach($departments as $data)
+                                <li>
+                                    <a href="{{ url('/departments/'.$data->id) }}"> {{ $data->department_name }}  </a>
+                                </li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>
@@ -115,9 +118,9 @@
     </section>
     <section class="footer-bottom-wrap">
         <div class="copyright">Copyright&copy;2021. All Rights Reserved.<a href="https://www.radiustheme.com">
-                Hospital Cox Ltd.</a>
+                Hospital Cox Ltd. </a>
         </div>
-        	<span style="color:gray; font-size: 10px; font-style:italic; margin-left:200px; float: right;" >Developed By: <a href="https://www.facebook.com/alihossain.ringku">Ali Hossain Ringku</a>
+        	<span style="color:gray; font-size: 10px; font-style:italic; float: right;" > Developed By: <a href="https://www.facebook.com/alihossain.ringku">Ali Hossain Ringku</a>
         	</span>
         
     </section>
