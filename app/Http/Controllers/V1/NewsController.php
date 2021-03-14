@@ -81,11 +81,12 @@ class NewsController extends Controller
         return response()->json("Sorry! Not updated");
     }
 
-    public function destroy(Department $department)
+    public function destroy(Request $request)
     {
-        if($department->delete()){
-            return response()->json("Deleted successfully!");
-        }
-        return response()->json("Sorry! Not deleted");
+        //dd($request->all());
+        $id = $request->inputId;
+        $success = DB::table('news')->where('id', '=', $id)->delete();
+        return redirect()->back()->with('msg','News deleted with image  successfully!');
+        
     }
 }

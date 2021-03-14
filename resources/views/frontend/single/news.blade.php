@@ -12,7 +12,7 @@
                     <div class="blog-detail-box">
                         <div class="blog-detail-title">
                             <div class="item-img">
-                                <img src="img/blog/blog13.jpg" class="img-fluid" alt="blog">
+                                <img src="frontend/img/blog/blog13.jpg" class="img-fluid" alt="blog">
                                 <div class="post-date">20
                                     <span>June</span>
                                 </div>
@@ -37,7 +37,13 @@
                             </div>
                         </div>
                         <div class="blog-content">
-                            <p>{{$data->news_description}}.</p>
+                            <p> 
+								<?php 
+									$description=$data->news_description;
+									$description = preg_replace("/\r\n|\r|\n/",'<br/>',$description);
+									echo $description; 
+								?> 
+							</p>
                         </div>
                         <div class="blog-social">
                             <h3>Share This Post:</h3>

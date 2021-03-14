@@ -74,11 +74,12 @@ class DoctorController extends Controller
         return response()->json("Sorry! Not updated");
     }
 
-    public function destroy(Doctor $doctor)
+    public function destroy(Request $request)
     {
-        if($doctor->delete()){
-            return response()->json("Deleted successfully!");
-        }
-        return response()->json("Sorry! Not deleted");
+        //dd($request->all());
+        $id = $request->inputId;
+        $success = DB::table('doctors')->where('id', '=', $id)->delete();
+        return redirect()->back()->with('msg','Doctor deleted with image  successfully!');
+        
     }
 }

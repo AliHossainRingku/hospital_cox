@@ -31,14 +31,31 @@
                 <td><?php if($department->publication_status == 1){ ?> <a style="color: green">Published</a><?php } else{ ?> <a style="color: darkred">Unpublished</a><?php } ?></td>
                 <td>
                     <?php if($department->publication_status == 1 ){ ?>
-                    <a style="color:red" class="glyphicon glyphicon-remove" href="{{ url('/deactive-department/'.$department->id) }}"></a> <?php } else{
-                        ?>
-                    <a style="color:green" class="glyphicon glyphicon-ok" href="{{ url('/active-department/'.$department->id) }}"></a><?php }?>
+                        <form method="post" action="{{URL::to('admin/unpublish-department')}}" enctype="multipart/form-data">
+                        {{csrf_field()}}
+                            <input type="hidden" name="inputId" value="{{$department->id}}">
+                            <button style="color: red" class="glyphicon glyphicon-remove" type="submit"></button>
+                        </form> 
+                    <?php } else{?>
+                    <form method="post" action="{{URL::to('admin/publish-department')}}" enctype="multipart/form-data">
+                        {{csrf_field()}}
+                            <input type="hidden" name="inputId" value="{{$department->id}}">
+                            <button style="color: green" class="glyphicon glyphicon-ok" type="submit"></button>
+                        </form>
+                    <?php }?>
 
-                    |
-                    <a href="{{ url('/departments/'.$department->id) }}">Edit</a> |
-                    <a href="{{ url('/departments/'.$department->id) }}" onclick="return confirm('Are you sure to delete it?')">Delete</a>
-                    </td>
+                    <form method="get" action="{{URL::to('admin/departments/'.$department->id)}}" enctype="multipart/form-data">
+                    {{csrf_field()}}
+                        <input type="hidden" name="inputId" value="{{$department->id}}">
+                        <button style="color: blue" class="glyphicon glyphicon-edit" type="submit"></button>
+                    </form> 
+
+                    <form method="post" action="{{URL::to('admin/delete-department')}}" enctype="multipart/form-data">
+                    {{csrf_field()}}
+                        <input type="hidden" name="inputId" value="{{$department->id}}">
+                        <button style="color: red" class="glyphicon glyphicon-trash" type="submit" onclick="return confirm('Are you sure to delete it?')"></button>
+                    </form>
+                </td>
             </tr>
         @endforeach
         </tbody>

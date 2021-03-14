@@ -12,7 +12,19 @@
             <!-- /input-group -->
         </li>
         <li>
-            <a href="{{ URL::to('/dashboard') }}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+            <a href="{{ URL::to('/admin') }}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+        </li>
+        
+        <li>
+            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Banners <span class="fa arrow"></span></a>
+            <ul class="nav nav-second-level">
+                <li>
+                    <a href="{{URL::to('admin/banner')}}">Add Banner</a>
+                </li>
+                <li>
+                    <a href="{{URL::to('admin/banners')}}">Manage Banners</a>
+                </li>
+            </ul>
         </li>
 
         <li>
@@ -55,25 +67,14 @@
             <a href="#"><i class="fa fa-product-hunt fa-fw"></i> News and Events <span class="fa arrow"></span></a>
             <ul class="nav nav-second-level">
                 <li>
-                    <a href="{{URL::to('admin/new')}}">Add News or Event</a>
+                    <a href="{{URL::to('admin/new')}}">Add News</a>
                 </li>
                 <li>
-                    <a href="{{URL::to('admin/news')}}">Manage News or Events</a>
+                    <a href="{{URL::to('admin/news')}}">Manage News</a>
                 </li>
             </ul>
         </li>
 
-                <li>
-            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Banners <span class="fa arrow"></span></a>
-            <ul class="nav nav-second-level">
-                <li>
-                    <a href="{{URL::to('admin/banner')}}">Add Banner</a>
-                </li>
-                <li>
-                    <a href="{{URL::to('admin/banners')}}">Manage Banners</a>
-                </li>
-            </ul>
-        </li>
         <li>
             <a href="#"><i class="fa fa-braille fa-fw"></i> Client Reviews <span class="fa arrow"></span></a>
             <ul class="nav nav-second-level">

@@ -121,6 +121,6 @@
 
 <style type="text/css">
     .template-main-menu a{
-        color: gray !important;
+        
     }
 </style>

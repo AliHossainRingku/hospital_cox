@@ -66,29 +66,46 @@ class DepartmentController extends Controller
 
     }
 
-    public function show($departmentId){
-        $departments = DB::table('departments')
-                    ->where('departments.publication_status','=',1)
+    public function show($id){
+        $edit_department = DB::table('departments')
+                    ->where('departments.id','=',$id)
                     ->get();
-        return response()->json($departments);
+        return view('admin.department.editDepartment',['edit_department'=>$edit_department]);
     }
 
-    public function update(Request $request, Department $department)
+    public function update(Request $request)
     {
-        if($department->update($request->all())){
-            return response()->json($department, 200);
+        //dd($request->all());
+        $id = $request->inputId;
+
+        $departments = array();
+        $departments['department_name'] = $request->department_name;
+        $departments['department_description'] = $request->department_description;
+        $departments['publication_status'] = $request->publication_status;
+
+        if ($request->hasFile('department_image')) {
+            $image = $request->file('department_image');
+            $name = $id.'.'.$image->getClientOriginalExtension();
+            $destinationPath = public_path('uploaded_images\departments');
+            $image->move($destinationPath, $name);
+  
+            $totalPathName = 'uploaded_images/departments/'.$name;
+            $departments['department_image'] = $totalPathName;
+            $success = DB::table('departments')->where('id','=',$id)->update($departments);
+            return redirect()->back()->with('msg','Banner update with image database successfully!'); 
         }
-        return response()->json("Sorry! Not updated");
+
+        $success = DB::table('departments')->where('id','=',$id)->update($departments);
+        return redirect()->back()->with('msg','Department updated without image database successfully!');
     }
 
-    public function destroy(Department $department)
+    public function destroy(Request $request)
     {
-        dd($request->all());
-
-        // if($department->delete()){
-        //     return response()->json("Deleted successfully!");
-        // }
-        // return response()->json("Sorry! Not deleted");
+        //dd($request->all());
+        $id = $request->inputId;
+        $success = DB::table('departments')->where('id', '=', $id)->delete();
+        return redirect()->back()->with('msg','Department deleted with image  successfully!');
+        
     }
 
 }

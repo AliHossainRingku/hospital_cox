@@ -1,7 +1,7 @@
 @extends('admin.admin_layout')
 
 @section('admin_content')
-    <h1>Manage Slider/Banner</h1>
+    <h1>Manage Banner(Slider)</h1>
 
     {{ Session::get('msg') }}
 
@@ -11,7 +11,7 @@
         <tr>
             <th>SI</th>
             <th>Banner Title</th>
-            <th>Doctor Description</th>
+            <th>Banner Subtitle</th>
             <th>Image</th>
             <th>Publication Status</th>
             <th>Action</th>
@@ -26,18 +26,36 @@
             <tr>
                 <td>{{ ++$i }}</td>
                 <td>{{ $banner->banner_title }}</td>
-                <td>{{ $banner->banner_description}}</td>
+                <td>{{ $banner->banner_subtitle }}</td>
                 <td><img src="{{asset($banner->banner_image)}}" style="height: 70px; width: 100px;"></td>
                 <td><?php if($banner->publication_status == 1){ ?> <a style="color: green">Published</a><?php } else{ ?> <a style="color: darkred">Unpublished</a><?php } ?></td>
                 <td>
                     <?php if($banner->publication_status == 1 ){ ?>
-                    <a style="color:red" class="glyphicon glyphicon-remove" href="{{ url('/deactive-banner/'.$banner->id) }}"></a> <?php } else{
-                        ?>
-                    <a style="color:green" class="glyphicon glyphicon-ok" href="{{ url('/active-banner/'.$banner->id) }}"></a><?php }?>
+                        <form method="post" action="{{URL::to('admin/unpublish-banner')}}" enctype="multipart/form-data">
+                        {{csrf_field()}}
+                            <input type="hidden" name="inputId" value="{{$banner->id}}">
+                            <button style="color: red" class="glyphicon glyphicon-remove" type="submit"></button>
+                        </form> 
+                    <?php } else{?>
+                    <form method="post" action="{{URL::to('admin/publish-banner')}}" enctype="multipart/form-data">
+                        {{csrf_field()}}
+                            <input type="hidden" name="inputId" value="{{$banner->id}}">
+                            <button style="color: green" class="glyphicon glyphicon-ok" type="submit"></button>
+                        </form>
+                    <?php }?>
 
-                    |
-                    <a href="{{ url('/banners/'.$banner->id) }}">Edit</a> |
-                    <a href="{{ url('admin/banners/'.$banner->id) }}" onclick="return confirm('Are you sure to delete it?')">Delete</a></td>
+                    <form method="get" action="{{URL::to('admin/banners/'.$banner->id)}}" enctype="multipart/form-data">
+                    {{csrf_field()}}
+                        <input type="hidden" name="inputId" value="{{$banner->id}}">
+                        <button style="color: blue" class="glyphicon glyphicon-edit" type="submit"></button>
+                    </form> 
+
+                    <form method="post" action="{{URL::to('admin/delete-banner')}}" enctype="multipart/form-data">
+                    {{csrf_field()}}
+                        <input type="hidden" name="inputId" value="{{$banner->id}}">
+                        <button style="color: red" class="glyphicon glyphicon-trash" type="submit" onclick="return confirm('Are you sure to delete it?')"></button>
+                    </form>
+                </td>
             </tr>
         @endforeach
         </tbody>

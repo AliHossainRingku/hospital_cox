@@ -56,29 +56,6 @@ Route::get('reviews/{id}', [HomeController::class, 'review']);
 
 Route::middleware('auth:web')->group(function () {
 	Route::prefix('admin')->group(function(){
-		//Departments
-		Route::get('department', [DepartmentController::class, 'create']);
-		Route::get('departments', [DepartmentController::class, 'index']);
-		Route::post('departments', [DepartmentController::class, 'store']);
-		Route::get('departments/{department}', [DepartmentController::class, 'show']);
-		Route::post('departments/{department}', [DepartmentController::class, 'update']);
-		Route::delete('departments/{department}', [DepartmentController::class, 'destroy']);
-
-		//Doctors
-		Route::get('doctor', [DoctorController::class, 'create']);
-		Route::get('doctors', [DoctorController::class, 'index']);
-		Route::post('doctors', [DoctorController::class, 'store']);
-		Route::get('doctors/{doctor}', [DoctorController::class, 'show']);
-		Route::post('doctors/{doctor}', [DoctorController::class, 'update']);
-		Route::delete('doctors/{doctor}', [DoctorController::class, 'destroy']);
-
-		//News
-		Route::get('new', [NewsController::class, 'create']);
-		Route::get('news', [NewsController::class, 'index']);
-		Route::post('news', [NewsController::class, 'store']);
-		Route::get('news/{news}', [NewsController::class, 'show']);
-		Route::post('news/{news}', [NewsController::class, 'update']);
-		Route::delete('news/{news}', [NewsController::class, 'destroy']);
 
 		//Banner
 		Route::get('banner', [BannerController::class, 'create']);
@@ -86,15 +63,42 @@ Route::middleware('auth:web')->group(function () {
 		Route::post('banners', [BannerController::class, 'store']);
 		Route::get('banners/{banner}', [BannerController::class, 'show']);
 		Route::post('banners/{banner}', [BannerController::class, 'update']);
-		Route::delete('banners/{banner}', [BannerController::class, 'destroy']);
+		Route::get('edit-banner', [BannerController::class, 'show']);
+		Route::post('update-banner', [BannerController::class, 'update']);
+		Route::post('delete-banner', [BannerController::class, 'destroy']);
+		//Route::delete('banners/{banner}', [BannerController::class, 'destroy']);
 
+		//Departments
+		Route::get('department', [DepartmentController::class, 'create']);
+		Route::get('departments', [DepartmentController::class, 'index']);
+		Route::post('departments', [DepartmentController::class, 'store']);
+		Route::get('departments/{department}', [DepartmentController::class, 'show']);
+		Route::post('departments/{department}', [DepartmentController::class, 'update']);
+		Route::post('delete-department', [DepartmentController::class, 'destroy']);
+
+		//Doctors
+		Route::get('doctor', [DoctorController::class, 'create']);
+		Route::get('doctors', [DoctorController::class, 'index']);
+		Route::post('doctors', [DoctorController::class, 'store']);
+		Route::get('doctors/{doctor}', [DoctorController::class, 'show']);
+		Route::post('doctors/{doctor}', [DoctorController::class, 'update']);
+		Route::post('delete-doctor', [DoctorController::class, 'destroy']);
+
+		//News
+		Route::get('new', [NewsController::class, 'create']);
+		Route::get('news', [NewsController::class, 'index']);
+		Route::post('news', [NewsController::class, 'store']);
+		Route::get('news/{news}', [NewsController::class, 'show']);
+		Route::post('news/{news}', [NewsController::class, 'update']);
+		Route::post('delete-news', [NewsController::class, 'destroy']);
+		
 		//services
 		Route::get('service', [ServiceController::class, 'create']);
 		Route::get('services', [ServiceController::class, 'index']);
 		Route::post('services', [ServiceController::class, 'store']);
 		Route::get('services/{service}', [ServiceController::class, 'show']);
 		Route::post('services/{service}', [ServiceController::class, 'update']);
-		Route::delete('services/{service}', [ServiceController::class, 'destroy']);
+		Route::post('delete-service', [ServiceController::class, 'destroy']);
 
 		//Review
 		Route::get('review', [ReviewController::class, 'create']);
@@ -102,7 +106,7 @@ Route::middleware('auth:web')->group(function () {
 		Route::post('reviews', [ReviewController::class, 'store']);
 		Route::get('reviews/{review}', [ReviewController::class, 'show']);
 		Route::post('reviews/{review}', [ReviewController::class, 'update']);
-		Route::delete('reviews/{review}', [ReviewController::class, 'destroy']);
+		Route::post('delete-review', [ReviewController::class, 'destroy']);
 
 	});
 });

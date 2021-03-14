@@ -24,25 +24,43 @@
         <?php
         $i = 0;
         ?>
-        @foreach($doctors as $department)
+        @foreach($doctors as $doctor)
             <tr>
                 <td>{{ ++$i }}</td>
-                <td>{{ $department->doctor_name }}</td>
-                <td>{{ $department->department_id}}</td>
-                <td>{{ $department->doctor_designation}}</td>
-                <td>{{ $department->doctor_description}}</td>
-                <td><img src="{{asset($department->doctor_image)}}" style="height: 70px; width: 100px"></td>
+                <td>{{ $doctor->doctor_name }}</td>
+                <td>{{ $doctor->department_id}}</td>
+                <td>{{ $doctor->doctor_designation}}</td>
+                <td>{{ $doctor->doctor_description}}</td>
+                <td><img src="{{asset($doctor->doctor_image)}}" style="height: 70px; width: 100px"></td>
 
-                <td><?php if($department->publication_status == 1){ ?> <a style="color: green">Published</a><?php } else{ ?> <a style="color: darkred">Unpublished</a><?php } ?></td>
+                <td><?php if($doctor->publication_status == 1){ ?> <a style="color: green">Published</a><?php } else{ ?> <a style="color: darkred">Unpublished</a><?php } ?></td>
                 <td>
-                    <?php if($department->publication_status == 1 ){ ?>
-                    <a style="color:red" class="glyphicon glyphicon-remove" href="{{ url('/deactive-department/'.$department->id) }}"></a> <?php } else{
-                        ?>
-                    <a style="color:green" class="glyphicon glyphicon-ok" href="{{ url('/active-department/'.$department->id) }}"></a><?php }?>
+                    <?php if($doctor->publication_status == 1 ){ ?>
+                        <form method="post" action="{{URL::to('admin/unpublish-doctor')}}" enctype="multipart/form-data">
+                        {{csrf_field()}}
+                            <input type="hidden" name="inputId" value="{{$doctor->id}}">
+                            <button style="color: red" class="glyphicon glyphicon-remove" type="submit"></button>
+                        </form> 
+                    <?php } else{?>
+                    <form method="post" action="{{URL::to('admin/publish-doctor')}}" enctype="multipart/form-data">
+                        {{csrf_field()}}
+                            <input type="hidden" name="inputId" value="{{$doctor->id}}">
+                            <button style="color: green" class="glyphicon glyphicon-ok" type="submit"></button>
+                        </form>
+                    <?php }?>
 
-                    |
-                    <a href="{{ url('/departments/'.$department->id) }}">Edit</a> |
-                    <a href="{{ url('/departments/'.$department->id) }}" onclick="return confirm('Are you sure to delete it?')">Delete</a></td>
+                    <form method="get" action="{{URL::to('admin/doctors/'.$doctor->id)}}" enctype="multipart/form-data">
+                    {{csrf_field()}}
+                        <input type="hidden" name="inputId" value="{{$doctor->id}}">
+                        <button style="color: blue" class="glyphicon glyphicon-edit" type="submit"></button>
+                    </form> 
+
+                    <form method="post" action="{{URL::to('admin/delete-doctor')}}" enctype="multipart/form-data">
+                    {{csrf_field()}}
+                        <input type="hidden" name="inputId" value="{{$doctor->id}}">
+                        <button style="color: red" class="glyphicon glyphicon-trash" type="submit" onclick="return confirm('Are you sure to delete it?')"></button>
+                    </form>
+                </td>
             </tr>
         @endforeach
         </tbody>

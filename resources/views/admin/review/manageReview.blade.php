@@ -33,13 +33,31 @@
                 <td><?php if($review->publication_status == 1){ ?> <a style="color: green">Published</a><?php } else{ ?> <a style="color: darkred">Unpublished</a><?php } ?></td>
                 <td>
                     <?php if($review->publication_status == 1 ){ ?>
-                    <a style="color:red" class="glyphicon glyphicon-remove" href="{{ url('/deactive-review/'.$review->id) }}"></a> <?php } else{
-                        ?>
-                    <a style="color:green" class="glyphicon glyphicon-ok" href="{{ url('/active-review/'.$review->id) }}"></a><?php }?>
+                        <form method="post" action="{{URL::to('admin/unpublish-review')}}" enctype="multipart/form-data">
+                        {{csrf_field()}}
+                            <input type="hidden" name="inputId" value="{{$review->id}}">
+                            <button style="color: red" class="glyphicon glyphicon-remove" type="submit"></button>
+                        </form> 
+                    <?php } else{?>
+                    <form method="post" action="{{URL::to('admin/publish-review')}}" enctype="multipart/form-data">
+                        {{csrf_field()}}
+                            <input type="hidden" name="inputId" value="{{$review->id}}">
+                            <button style="color: green" class="glyphicon glyphicon-ok" type="submit"></button>
+                        </form>
+                    <?php }?>
 
-                    |
-                    <a href="{{ url('/reviews/'.$review->id) }}">Edit</a> |
-                    <a href="{{ url('/reviews/'.$review->id) }}" onclick="return confirm('Are you sure to delete it?')">Delete</a></td>
+                    <form method="post" action="{{URL::to('admin/reviews/'.$review->id)}}" enctype="multipart/form-data">
+                    {{csrf_field()}}
+                        <input type="hidden" name="inputId" value="{{$review->id}}">
+                        <button style="color: blue" class="glyphicon glyphicon-edit" type="submit"></button>
+                    </form> 
+
+                    <form method="post" action="{{URL::to('admin/delete-review')}}" enctype="multipart/form-data">
+                    {{csrf_field()}}
+                        <input type="hidden" name="inputId" value="{{$review->id}}">
+                        <button style="color: red" class="glyphicon glyphicon-trash" type="submit" onclick="return confirm('Are you sure to delete it?')"></button>
+                    </form>
+                </td>
             </tr>
         @endforeach
         </tbody>

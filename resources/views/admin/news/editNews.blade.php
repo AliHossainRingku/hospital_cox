@@ -3,6 +3,7 @@
 @section('admin_content')
     <h1>Edit Department</h1>
     <hr>
+    {{ Session::get('msg') }}
 
     {!! Form::open(['url'=>'/update-category','method'=>'POST', 'name'=>'editForm']) !!}
     <div class="form-group">

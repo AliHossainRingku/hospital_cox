@@ -53,7 +53,9 @@ class HomeController extends Controller
     {
         $news = DB::table('news')
             ->select('news.*')
-            ->get();
+            ->where('news.publication_status',1)
+            ->paginate(4);
+            
         return view('frontend.manages.news',['news'=>$news]);
     }    
 
