@@ -66,19 +66,37 @@ class NewsController extends Controller
         return redirect()->back()->with('msg','News added without image database successfully!');
     }
 
-    public function show($departmentId){
-        $departments = DB::table('departments')
-                    ->where('departments.publication_status','=',1)
+    public function show($id){
+        $edit_news = DB::table('news')
+                    ->where('news.id','=',$id)
                     ->get();
-        return response()->json($courses);
+        return view('admin.news.editNews',['edit_news'=>$edit_news]);
     }
 
-    public function update(Request $request, Course $department)
+    public function update(Request $request)
     {
-        if($department->update($request->all())){
-            return response()->json($department, 200);
+        //dd($request->all());
+        $id = $request->inputId;
+
+        $news = array();
+        $news['news_title'] = $request->news_title;
+        $news['news_description'] = $request->news_description;
+        $news['publication_status'] = $request->publication_status;
+
+        if ($request->hasFile('news_image')) {
+            $image = $request->file('news_image');
+            $name = $id.'.'.$image->getClientOriginalExtension();
+            $destinationPath = public_path('uploaded_images\news');
+            $image->move($destinationPath, $name);
+  
+            $totalPathName = 'uploaded_images/news/'.$name;
+            $news['news_image'] = $totalPathName;
+            $success = DB::table('news')->where('id','=',$id)->update($news);
+            return redirect()->back()->with('msg','News updated with image successfully!'); 
         }
-        return response()->json("Sorry! Not updated");
+
+        $success = DB::table('news')->where('id','=',$id)->update($news);
+        return redirect()->back()->with('msg','News updated without image database successfully!');
     }
 
     public function destroy(Request $request)

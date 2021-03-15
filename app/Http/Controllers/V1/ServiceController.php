@@ -63,19 +63,37 @@ class ServiceController extends Controller
         return redirect()->back()->with('msg','Services added without image database successfully!');
     }
 
-    public function show($departmentId){
-        $departments = DB::table('departments')
-                    ->where('departments.publication_status','=',1)
+    public function show($id){
+        $edit_services = DB::table('services')
+                    ->where('services.id','=',$id)
                     ->get();
-        return response()->json($departments);
+        return view('admin.service.editService',['edit_services'=>$edit_services]);
     }
 
-    public function update(Request $request, Department $department)
+    public function update(Request $request)
     {
-        if($department->update($request->all())){
-            return response()->json($department, 200);
+        //dd($request->all());
+        $id = $request->inputId;
+
+        $services = array();
+        $services['service_name'] = $request->service_name;
+        $services['service_description'] = $request->service_description;
+        $services['publication_status'] = $request->publication_status;
+
+        if ($request->hasFile('service_image')) {
+            $image = $request->file('service_image');
+            $name = $id.'.'.$image->getClientOriginalExtension();
+            $destinationPath = public_path('uploaded_images\services');
+            $image->move($destinationPath, $name);
+  
+            $totalPathName = 'uploaded_images/services/'.$name;
+            $services['service_image'] = $totalPathName;
+            $success = DB::table('services')->where('id','=',$id)->update($services);
+            return redirect()->back()->with('msg','Service updated with image successfully!'); 
         }
-        return response()->json("Sorry! Not updated");
+
+        $success = DB::table('services')->where('id','=',$id)->update($services);
+        return redirect()->back()->with('msg','Service updated without image database successfully!');
     }
 
     public function destroy(Request $request)

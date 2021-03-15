@@ -44,7 +44,7 @@
                         </form>
                     <?php }?>
 
-                    <form method="post" action="{{URL::to('admin/edit-service')}}" enctype="multipart/form-data">
+                    <form method="get" action="{{URL::to('admin/services/'.$service->id)}}" enctype="multipart/form-data">
                     {{csrf_field()}}
                         <input type="hidden" name="inputId" value="{{$service->id}}">
                         <button style="color: blue" class="glyphicon glyphicon-edit" type="submit"></button>

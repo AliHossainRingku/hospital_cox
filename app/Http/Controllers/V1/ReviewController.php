@@ -33,19 +33,38 @@ class ReviewController extends Controller
         }
     }
 
-    public function show($reviewId){
-        $reviews = DB::table('reviews')
-                    ->where('reviews.publication_status','=',1)
+    public function show($id){
+        $edit_reviews = DB::table('reviews')
+                    ->where('reviews.id','=',$id)
                     ->get();
-        return response()->json($reviews);
+        return view('admin.review.editReview',['edit_reviews'=>$edit_reviews]);
     }
 
-    public function update(Request $request, Department $department)
+    public function update(Request $request)
     {
-        if($department->update($request->all())){
-            return response()->json($department, 200);
+        //dd($request->all());
+        $id = $request->inputId;
+
+        $reviews = array();
+        $reviews['user_name'] = $request->user_name;
+        $reviews['review_description'] = $request->review_description;
+        $reviews['rating'] = $request->rating;
+        $reviews['publication_status'] = $request->publication_status;
+
+        if ($request->hasFile('review_image')) {
+            $image = $request->file('review_image');
+            $name = $id.'.'.$image->getClientOriginalExtension();
+            $destinationPath = public_path('uploaded_images\reviews');
+            $image->move($destinationPath, $name);
+  
+            $totalPathName = 'uploaded_images/reviews/'.$name;
+            $reviews['review_image'] = $totalPathName;
+            $success = DB::table('reviews')->where('id','=',$id)->update($reviews);
+            return redirect()->back()->with('msg','Review updated with image successfully!'); 
         }
-        return response()->json("Sorry! Not updated");
+
+        $success = DB::table('reviews')->where('id','=',$id)->update($reviews);
+        return redirect()->back()->with('msg','Review updated without image database successfully!');
     }
 
     public function destroy(Request $request)

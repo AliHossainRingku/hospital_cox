@@ -46,7 +46,7 @@
                         </form>
                     <?php }?>
 
-                    <form method="get" action="{{URL::to('admin/new/'.$new->id)}}" enctype="multipart/form-data">
+                    <form method="get" action="{{URL::to('admin/news/'.$new->id)}}" enctype="multipart/form-data">
                     {{csrf_field()}}
                         <input type="hidden" name="inputId" value="{{$new->id}}">
                         <button style="color: blue" class="glyphicon glyphicon-edit" type="submit"></button>

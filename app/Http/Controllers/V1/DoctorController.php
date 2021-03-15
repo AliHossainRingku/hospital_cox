@@ -59,19 +59,39 @@ class DoctorController extends Controller
 
     }
 
-    public function show($doctorId){
-        $doctors = DB::table('doctors')
-                    ->where('doctors.publication_status','=',1)
+    public function show($id){
+        $edit_doctors = DB::table('doctors')
+                    ->where('doctors.id','=',$id)
                     ->get();
-        return response()->json($doctors);
+        return view('admin.doctor.editDoctor',['edit_doctors'=>$edit_doctors]);
     }
 
-    public function update(Request $request, Course $doctor)
+    public function update(Request $request)
     {
-        if($doctor->update($request->all())){
-            return response()->json($doctor, 200);
+        //dd($request->all());
+        $id = $request->inputId;
+
+        $doctors = array();
+        $doctors['doctor_name'] = $request->doctor_name;
+        $doctors['department_id'] = $request->department_id;
+        $doctors['doctor_designation'] = $request->doctor_designation;
+        $doctors['doctor_description'] = $request->doctor_description;
+        $doctors['publication_status'] = $request->publication_status;
+
+        if ($request->hasFile('doctor_image')) {
+            $image = $request->file('doctor_image');
+            $name = $id.'.'.$image->getClientOriginalExtension();
+            $destinationPath = public_path('uploaded_images\doctors');
+            $image->move($destinationPath, $name);
+  
+            $totalPathName = 'uploaded_images/doctors/'.$name;
+            $doctors['doctor_image'] = $totalPathName;
+            $success = DB::table('doctors')->where('id','=',$id)->update($doctors);
+            return redirect()->back()->with('msg','Doctor updated with image successfully!'); 
         }
-        return response()->json("Sorry! Not updated");
+
+        $success = DB::table('doctors')->where('id','=',$id)->update($doctors);
+        return redirect()->back()->with('msg','Doctor updated without image database successfully!');
     }
 
     public function destroy(Request $request)

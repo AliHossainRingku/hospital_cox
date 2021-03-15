@@ -92,7 +92,7 @@ class DepartmentController extends Controller
             $totalPathName = 'uploaded_images/departments/'.$name;
             $departments['department_image'] = $totalPathName;
             $success = DB::table('departments')->where('id','=',$id)->update($departments);
-            return redirect()->back()->with('msg','Banner update with image database successfully!'); 
+            return redirect()->back()->with('msg','Department updated with image successfully!'); 
         }
 
         $success = DB::table('departments')->where('id','=',$id)->update($departments);
