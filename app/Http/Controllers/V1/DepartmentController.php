@@ -103,6 +103,11 @@ class DepartmentController extends Controller
     {
         //dd($request->all());
         $id = $request->inputId;
+        $data = DB::table('departments')
+                        ->select('department_image')
+                        ->where('id',$id)
+                        ->first();
+        unlink($data->department_image);
         $success = DB::table('departments')->where('id', '=', $id)->delete();
         return redirect()->back()->with('msg','Department deleted with image  successfully!');
         

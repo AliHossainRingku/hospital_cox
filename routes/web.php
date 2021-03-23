@@ -41,7 +41,12 @@ Route::get('doctors', [HomeController::class, 'doctors']);
 Route::get('news', [HomeController::class, 'news']);
 Route::get('services', [HomeController::class, 'services']);
 Route::get('reviews', [HomeController::class, 'reviews']);
-Route::get('more', [HomeController::class, 'moreabout']);
+Route::get('moreabout', [HomeController::class, 'moreabout']);
+Route::get('floorplan', [HomeController::class, 'floorplan']);
+Route::get('outdoor', [HomeController::class, 'outdoor']);
+Route::get('indoor', [HomeController::class, 'indoor']);
+Route::get('majorcomponents', [HomeController::class, 'majorcomponents']);
+Route::get('diagnostic', [HomeController::class, 'diagnostic']);
 
 
 //SINGLE PAGE 

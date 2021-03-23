@@ -130,4 +130,28 @@ class HomeController extends Controller
         return view('frontend.single.moreabout');
     }
 
+    public function floorplan()
+    {
+        return view('frontend.single.static.floorplan');
+    }
+
+    public function outdoor()
+    {
+        return view('frontend.single.static.outdoor');
+    }
+
+    public function indoor()
+    {
+        return view('frontend.single.static.indoor');
+    }
+
+    public function majorcomponents()
+    {
+        return view('frontend.single.static.majorcomponents');
+    }
+
+    public function diagnostic()
+    {
+        return view('frontend.single.static.diagnostic');
+    }
 }

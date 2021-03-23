@@ -102,6 +102,13 @@ class BannerController extends Controller
     {
         //dd($request->all());
         $id = $request->inputId;
+
+        $data = DB::table('banners')
+                        ->select('banner_image')
+                        ->where('id',$id)
+                        ->first();
+        unlink($data->banner_image);
+
         $success = DB::table('banners')->where('id', '=', $id)->delete();
         return redirect()->back()->with('msg','Banner deleted with image  successfully!');
         

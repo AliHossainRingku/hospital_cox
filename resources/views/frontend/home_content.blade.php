@@ -35,9 +35,7 @@
                 <div class="text-left title-container s-tb-c">
                     <div class="container">
                         <div class="slider-big-text">We Have<span>Skilled Doctors &amp; Nurses</span></div>
-                        <p class="slider-paragraph padding-right">Mimply dummy text of the printing and
-                            typesetting Lorem
-                            ipsum dolor sit amet, consecte tur adipiscing.</p>
+                        <p class="slider-paragraph padding-right">Mimply dummy text of the printing and typesetting Lorem ipsum dolor sit amet, consecte tur adipiscing.</p>
                         <div class="slider-btn-area d-none d-xl-block">
                             <a href="#" class="item-light-btn">Read More<i class="fas fa-chevron-right"></i></a>
                         </div>
@@ -396,7 +394,7 @@
             </div>
             <?php $news = DB::table('news')
                 ->where('publication_status',1)
-                ->get();
+                ->paginate(3);
             ?>
             @foreach($news as $data)
             <div class="blog-box-layout1">
@@ -433,7 +431,7 @@
                 <div class="item">
                     <?php $reviews = DB::table('reviews')
                                             ->where('publication_status',1)
-                                            ->get();
+                                            ->paginate(3);
                     ?>
                     @foreach($reviews as $data)
                     <div class="testmonial-box-layout2">

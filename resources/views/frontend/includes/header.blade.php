@@ -23,13 +23,13 @@
                                     </ul>
                                 </li>
                                 <li>
-                                    <a href="{{url('/more')}}">More</a>
+                                    <a href="{{url('/moreabout')}}">More</a>
                                     <ul class="dropdown-menu-col-1">
-                                        <li><a href="about1.html">Floor Plan</a></li>
-                                        <li><a href="about2.html">Outdoor Services</a></li>
-                                        <li><a href="about3.html">Indoor Services</a></li>
-                                        <li><a href="about3.html">Major Components</a></li>
-                                        <li><a href="about3.html">Diagnostic and Test</a></li>
+                                        <li><a href="{{url('/floorplan')}}">Floor Plan</a></li>
+                                        <li><a href="{{url('/outdoor')}}">Outdoor Services</a></li>
+                                        <li><a href="{{url('/indoor')}}">Indoor Services</a></li>
+                                        <li><a href="{{url('/majorcomponents')}}">Major Components</a></li>
+                                        <li><a href="{{url('/diagnostic')}}">Diagnostic and Test</a></li>
                                     </ul>
                                 </li>                                        
                                 <li>
@@ -90,7 +90,7 @@
                                     </ul>
                                 </li>
                                 <li>
-                                    <a href="contact.html">Contact</a>
+                                    <a href="{{url('/contacts')}}">Contact</a>
                                 </li>
                             </ul>
                         </nav>
